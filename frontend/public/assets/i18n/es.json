@@ -9,7 +9,8 @@
     "PROFILE": "Perfil",
     "LOGIN": "Entrar",
     "REGISTER": "Registro",
-    "EXPLORE": "Explorar"
+    "EXPLORE": "Explorar",
+    "LOGOUT": "Salir"
   },
   "AUTH": {
     "EMAIL": "Correo",
@@ -104,5 +105,14 @@
     "ACCOUNT": "Información de cuenta",
     "PREFERENCES": "Preferencias",
     "PREFERENCES_TEXT": "El idioma se guarda localmente y se envía al API en cada petición."
+  },
+  "BUSINESS": {
+    "PUBLIC_PAGE": "Pagina publica",
+    "SHARE": "Compartir link",
+    "SERVICES": "Servicios",
+    "SERVICES_TITLE": "Lo que ofrece este negocio",
+    "NO_SERVICES": "Este negocio aun no publico servicios.",
+    "BOOK_THIS": "Reserva desde esta pagina",
+    "BOOK_HINT": "Comparte este link con clientes o abre el flujo completo de reserva con disponibilidad en tiempo real."
   }
 }

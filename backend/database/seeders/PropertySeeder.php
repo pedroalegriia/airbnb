@@ -17,6 +17,14 @@ class PropertySeeder extends Seeder
         $properties = [
             [
                 'host_id' => $lucia->id,
+                'slug' => 'hotel-prueba',
+                'business_name' => 'Hotel Prueba Barcelona',
+                'logo_url' => 'https://api.dicebear.com/8.x/initials/svg?seed=Hotel%20Prueba',
+                'facade_image_url' => 'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1400&q=85',
+                'services' => [
+                    ['category_es' => 'Comodidades', 'category_en' => 'Amenities', 'items' => ['Wifi', 'Cocina equipada', 'Aire acondicionado']],
+                    ['category_es' => 'Trabajo remoto', 'category_en' => 'Remote work', 'items' => ['Escritorio', 'Internet rapido', 'Check-in autonomo']],
+                ],
                 'title_es' => 'Loft luminoso en Barcelona',
                 'title_en' => 'Bright loft in Barcelona',
                 'description_es' => 'Loft moderno cerca de cafes, metro y restaurantes. Ideal para parejas o trabajo remoto.',
@@ -33,6 +41,14 @@ class PropertySeeder extends Seeder
             ],
             [
                 'host_id' => $lucia->id,
+                'slug' => 'apartamento-madrid',
+                'business_name' => 'Madrid Centro Suites',
+                'logo_url' => 'https://api.dicebear.com/8.x/initials/svg?seed=Madrid%20Suites',
+                'facade_image_url' => 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1400&q=85',
+                'services' => [
+                    ['category_es' => 'Ubicacion', 'category_en' => 'Location', 'items' => ['Centro historico', 'Metro cercano', 'Museos']],
+                    ['category_es' => 'Estancia', 'category_en' => 'Stay', 'items' => ['Balcon', 'Lavadora', 'Cocina']],
+                ],
                 'title_es' => 'Apartamento historico en Madrid',
                 'title_en' => 'Historic apartment in Madrid',
                 'description_es' => 'Piso con balcon en una calle tranquila, a pocos minutos de museos y vida nocturna.',
@@ -49,6 +65,14 @@ class PropertySeeder extends Seeder
             ],
             [
                 'host_id' => $miguel->id,
+                'slug' => 'villa-cancun',
+                'business_name' => 'Villa Mar Cancun',
+                'logo_url' => 'https://api.dicebear.com/8.x/initials/svg?seed=Villa%20Mar',
+                'facade_image_url' => 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=85',
+                'services' => [
+                    ['category_es' => 'Exterior', 'category_en' => 'Outdoor', 'items' => ['Piscina', 'Acceso a playa', 'Terraza']],
+                    ['category_es' => 'Familias', 'category_en' => 'Families', 'items' => ['8 huespedes', 'Parrilla', 'Estacionamiento']],
+                ],
                 'title_es' => 'Villa frente al mar en Cancun',
                 'title_en' => 'Oceanfront villa in Cancun',
                 'description_es' => 'Casa amplia con piscina, cocina equipada y acceso directo a la playa.',
@@ -65,6 +89,14 @@ class PropertySeeder extends Seeder
             ],
             [
                 'host_id' => $miguel->id,
+                'slug' => 'cabana-bariloche',
+                'business_name' => 'Bosque Sur Cabins',
+                'logo_url' => 'https://api.dicebear.com/8.x/initials/svg?seed=Bosque%20Sur',
+                'facade_image_url' => 'https://images.unsplash.com/photo-1542718610-a1d656d1884c?auto=format&fit=crop&w=1400&q=85',
+                'services' => [
+                    ['category_es' => 'Naturaleza', 'category_en' => 'Nature', 'items' => ['Senderos', 'Vista al bosque', 'Chimenea']],
+                    ['category_es' => 'Confort', 'category_en' => 'Comfort', 'items' => ['Calefaccion', 'Cocina', 'Pet friendly']],
+                ],
                 'title_es' => 'Cabana de montana en Bariloche',
                 'title_en' => 'Mountain cabin in Bariloche',
                 'description_es' => 'Cabana calida rodeada de bosque, perfecta para desconectar y caminar.',
@@ -81,6 +113,13 @@ class PropertySeeder extends Seeder
             ],
             [
                 'host_id' => $admin->id,
+                'slug' => 'estudio-valencia',
+                'business_name' => 'Valencia Studio',
+                'logo_url' => 'https://api.dicebear.com/8.x/initials/svg?seed=Valencia%20Studio',
+                'facade_image_url' => 'https://images.unsplash.com/photo-1524230572899-a752b3835840?auto=format&fit=crop&w=1400&q=85',
+                'services' => [
+                    ['category_es' => 'Basicos', 'category_en' => 'Basics', 'items' => ['Wifi', 'Cocina', 'Aire acondicionado']],
+                ],
                 'title_es' => 'Estudio pausado en Valencia',
                 'title_en' => 'Paused studio in Valencia',
                 'description_es' => 'Propiedad de ejemplo pausada para probar filtros de disponibilidad.',

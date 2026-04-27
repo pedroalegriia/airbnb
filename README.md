@@ -43,6 +43,11 @@ Demo credentials seeded with `php artisan db:seed`:
 - Guest: `sofia.guest@example.com` / `password`
 - Guest: `alex.guest@example.com` / `password`
 
+Seeded public business page example:
+
+- Frontend: `http://localhost:4200/hotel-prueba`
+- API: `http://localhost:8000/api/public-pages/hotel-prueba`
+
 ### Frontend
 
 ```bash

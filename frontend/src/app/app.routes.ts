@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './features/auth/login/login.component';
 import { RegisterComponent } from './features/auth/register/register.component';
+import { BusinessPageComponent } from './features/business/public-page/business-page.component';
 import { MyBookingsComponent } from './features/bookings/my-bookings/my-bookings.component';
 import { ProfileComponent } from './features/profile/profile.component';
 import { PropertyDetailComponent } from './features/properties/detail/property-detail.component';
@@ -15,5 +16,6 @@ export const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'bookings', component: MyBookingsComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: ':slug', component: BusinessPageComponent },
   { path: '**', redirectTo: '' }
 ];

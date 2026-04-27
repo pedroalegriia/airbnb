@@ -9,7 +9,8 @@
     "PROFILE": "Profile",
     "LOGIN": "Login",
     "REGISTER": "Register",
-    "EXPLORE": "Explore"
+    "EXPLORE": "Explore",
+    "LOGOUT": "Logout"
   },
   "AUTH": {
     "EMAIL": "Email",
@@ -104,5 +105,14 @@
     "ACCOUNT": "Account information",
     "PREFERENCES": "Preferences",
     "PREFERENCES_TEXT": "Language is saved locally and sent to the API on every request."
+  },
+  "BUSINESS": {
+    "PUBLIC_PAGE": "Public page",
+    "SHARE": "Share link",
+    "SERVICES": "Services",
+    "SERVICES_TITLE": "What this business offers",
+    "NO_SERVICES": "This business has not published services yet.",
+    "BOOK_THIS": "Book from this page",
+    "BOOK_HINT": "Share this link with customers or open the full booking flow with real-time availability."
   }
 }

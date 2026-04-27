@@ -23,7 +23,12 @@ import { I18nService } from '../../../core/services/i18n.service';
         <option value="es">ES</option>
         <option value="en">EN</option>
       </select>
-      <a routerLink="/login" class="hidden rounded-full bg-slate-950 px-4 py-2.5 text-sm font-black text-white shadow-lg shadow-slate-950/15 transition hover:-translate-y-0.5 sm:inline-flex">{{ 'NAV.LOGIN' | translate }}</a>
+      @if (auth.user(); as user) {
+        <span class="hidden rounded-full bg-rose-50 px-4 py-2 text-sm font-black text-rose-600 sm:inline-flex">{{ user.name }}</span>
+        <button type="button" class="rounded-full bg-slate-950 px-4 py-2.5 text-sm font-black text-white shadow-lg shadow-slate-950/15 transition hover:-translate-y-0.5" (click)="auth.logout()">{{ 'NAV.LOGOUT' | translate }}</button>
+      } @else {
+        <a routerLink="/login" class="rounded-full bg-slate-950 px-4 py-2.5 text-sm font-black text-white shadow-lg shadow-slate-950/15 transition hover:-translate-y-0.5">{{ 'NAV.LOGIN' | translate }}</a>
+      }
     </div>
   </nav>
 </header>

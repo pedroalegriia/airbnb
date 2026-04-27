@@ -19,6 +19,7 @@ class PropertyRepository implements PropertyRepositoryInterface
             })
             ->latest()->paginate(min((int)($filters['per_page'] ?? 12), 50));
     }
+    public function findBySlug(string $slug): Property { return Property::with(['reviews.user:id,name'])->where('slug', $slug)->where('status', 'active')->where('is_blocked', false)->firstOrFail(); }
     public function findVisible(int $id): Property { return Property::with(['reviews.user:id,name'])->where('is_blocked', false)->findOrFail($id); }
     public function create(array $data): Property { return Property::create($data); }
     public function update(Property $property, array $data): Property { $property->update($data); return $property->refresh(); }

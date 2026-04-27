@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('/auth/register', [AuthController::class, 'register']);
 Route::post('/auth/login', [AuthController::class, 'login']);
 Route::get('/properties', [PropertyController::class, 'index']);
+Route::get('/business-pages/{slug}', [PropertyController::class, 'publicPage']);
 Route::get('/properties/{id}', [PropertyController::class, 'show']);
 Route::post('/payments/stripe/webhook', [PaymentController::class, 'stripeWebhook']);
 
