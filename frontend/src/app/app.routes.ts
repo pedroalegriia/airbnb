@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { roleGuard } from './core/guards/auth.guard';
 import { LoginComponent } from './features/auth/login/login.component';
 import { RegisterComponent } from './features/auth/register/register.component';
 import { AdminDashboardComponent } from './features/admin/dashboard/admin-dashboard.component';
@@ -16,10 +17,10 @@ export const routes: Routes = [
   { path: 'properties/:id', component: PropertyDetailComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'bookings', component: MyBookingsComponent },
-  { path: 'admin', component: AdminDashboardComponent },
-  { path: 'host/activities', component: HostActivitiesComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'bookings', component: MyBookingsComponent, canActivate: [roleGuard], data: { roles: ['guest', 'host', 'admin'] } },
+  { path: 'admin', component: AdminDashboardComponent, canActivate: [roleGuard], data: { roles: ['admin'] } },
+  { path: 'host/activities', component: HostActivitiesComponent, canActivate: [roleGuard], data: { roles: ['host', 'admin'] } },
+  { path: 'profile', component: ProfileComponent, canActivate: [roleGuard], data: { roles: ['guest', 'host', 'admin'] } },
   { path: ':slug', component: BusinessPageComponent },
   { path: '**', redirectTo: '' }
 ];

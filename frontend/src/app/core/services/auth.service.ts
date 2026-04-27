@@ -9,7 +9,16 @@ export interface User { id: number; name: string; email: string; role: 'guest' |
 export class AuthService {
   private readonly baseUrl = 'http://localhost:8000/api/auth';
   readonly user = signal<User | null>(this.restoreUser());
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    if (this.isLoggedIn() && !this.user()) {
+      this.http.get<{ data: User }>(`${this.baseUrl}/me`).pipe(catchError(() => of(null))).subscribe(response => {
+        if (response?.data) {
+          localStorage.setItem('user', JSON.stringify(response.data));
+          this.user.set(response.data);
+        }
+      });
+    }
+  }
   login(payload: { email: string; password: string }) { return this.http.post<AuthPayload>(`${this.baseUrl}/login`, payload).pipe(tap(r => this.setSession(r.data))); }
   register(payload: { name: string; email: string; password: string; password_confirmation: string; role: string }) { return this.http.post<AuthPayload>(`${this.baseUrl}/register`, payload).pipe(tap(r => this.setSession(r.data))); }
   logout(): void {

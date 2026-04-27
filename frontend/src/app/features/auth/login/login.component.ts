@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
 import { AuthService } from '../../../core/services/auth.service';
 import { UiButtonComponent } from '../../../shared/components/ui-button/ui-button.component';
@@ -13,4 +13,4 @@ import { UiInputComponent } from '../../../shared/components/ui-input/ui-input.c
   <form [formGroup]="form" (ngSubmit)="submit()" class="card mx-auto w-full max-w-md space-y-5 p-6 md:p-8"><div><p class="text-sm font-black uppercase tracking-wide text-rose-500">{{ 'NAV.LOGIN' | translate }}</p><h1 class="mt-2 text-3xl font-black">{{ 'AUTH.LOGIN' | translate }}</h1><p class="mt-2 text-slate-500">{{ 'AUTH.LOGIN_TEXT' | translate }}</p></div><app-ui-input [control]="form.controls.email" [label]="'AUTH.EMAIL' | translate" /><app-ui-input [control]="form.controls.password" type="password" [label]="'AUTH.PASSWORD' | translate" />@if (error) { <p class="rounded-2xl bg-rose-50 px-4 py-3 text-sm font-bold text-rose-700">{{ error }}</p> }<app-ui-button type="submit" [disabled]="form.invalid">{{ 'AUTH.LOGIN' | translate }}</app-ui-button><p class="text-center text-sm font-semibold text-slate-500">{{ 'AUTH.NO_ACCOUNT' | translate }} <a routerLink="/register" class="font-black text-rose-600">{{ 'AUTH.REGISTER' | translate }}</a></p></form>
 </section>`
 })
-export class LoginComponent { error = ''; form = new FormBuilder().nonNullable.group({ email: ['', [Validators.required, Validators.email]], password: ['', Validators.required] }); constructor(private auth: AuthService, private router: Router) {} submit(): void { this.auth.login(this.form.getRawValue()).subscribe({ next: () => this.router.navigateByUrl('/'), error: e => this.error = e.error?.message || 'Error' }); } }
+export class LoginComponent { error = ''; form = new FormBuilder().nonNullable.group({ email: ['', [Validators.required, Validators.email]], password: ['', Validators.required] }); constructor(private auth: AuthService, private router: Router, private route: ActivatedRoute) {} submit(): void { const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/'; this.auth.login(this.form.getRawValue()).subscribe({ next: () => this.router.navigateByUrl(returnUrl), error: e => this.error = e.error?.message || 'Error' }); } }

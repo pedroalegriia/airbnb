@@ -11,6 +11,7 @@ import { UiButtonComponent } from '../../../shared/components/ui-button/ui-butto
   template: `<section class="app-shell grid gap-6 lg:grid-cols-[420px_1fr]">
   <form [formGroup]="form" (ngSubmit)="create()" class="card space-y-4 p-5 lg:sticky lg:top-24 lg:self-start">
     <div><p class="text-sm font-black uppercase tracking-wide text-rose-500">{{ 'HOST.EYEBROW' | translate }}</p><h1 class="mt-2 text-3xl font-black">{{ 'HOST.TITLE' | translate }}</h1><p class="mt-2 text-sm leading-6 text-slate-500">{{ 'HOST.SUBTITLE' | translate }}</p></div>
+    @if (error) { <p class="rounded-2xl bg-rose-50 px-4 py-3 text-sm font-bold text-rose-700">{{ error }}</p> }
     <input formControlName="property_id" type="number" class="field" placeholder="Property ID" />
     <input formControlName="title_es" class="field" placeholder="Titulo ES" />
     <input formControlName="title_en" class="field" placeholder="Title EN" />
@@ -34,10 +35,11 @@ import { UiButtonComponent } from '../../../shared/components/ui-button/ui-butto
 })
 export class HostActivitiesComponent implements OnInit {
   activities: Activity[] = [];
+  error = '';
   form = new FormBuilder().nonNullable.group({ property_id: [0, [Validators.required, Validators.min(1)]], title_es: ['', Validators.required], title_en: ['', Validators.required], category_es: ['', Validators.required], category_en: ['', Validators.required], price: [0], duration_minutes: [60], status: ['active', Validators.required] });
   constructor(private api: ApiService) {}
   ngOnInit(): void { this.load(); }
-  load(): void { this.api.getActivities().subscribe(r => this.activities = r.data); }
-  create(): void { this.api.createActivity(this.form.getRawValue()).subscribe(() => { this.form.reset({ property_id: 0, title_es: '', title_en: '', category_es: '', category_en: '', price: 0, duration_minutes: 60, status: 'active' }); this.load(); }); }
-  remove(activity: Activity): void { this.api.deleteActivity(activity.id).subscribe(() => this.load()); }
+  load(): void { this.api.getActivities().subscribe({ next: r => this.activities = r.data, error: e => this.error = e.error?.message || 'No autorizado' }); }
+  create(): void { this.error = ''; this.api.createActivity(this.form.getRawValue()).subscribe({ next: () => { this.form.reset({ property_id: 0, title_es: '', title_en: '', category_es: '', category_en: '', price: 0, duration_minutes: 60, status: 'active' }); this.load(); }, error: e => this.error = e.error?.message || 'No autorizado' }); }
+  remove(activity: Activity): void { this.api.deleteActivity(activity.id).subscribe({ next: () => this.load(), error: e => this.error = e.error?.message || 'No autorizado' }); }
 }
