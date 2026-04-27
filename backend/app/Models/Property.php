@@ -19,4 +19,5 @@ class Property extends Model
     public function availability(): HasMany { return $this->hasMany(Availability::class); }
     public function bookings(): HasMany { return $this->hasMany(Booking::class); }
     public function reviews(): HasMany { return $this->hasMany(Review::class); }
+    public function activities(): HasMany { return $this->hasMany(Activity::class); }
 }

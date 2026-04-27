@@ -10,7 +10,9 @@
     "LOGIN": "Login",
     "REGISTER": "Register",
     "EXPLORE": "Explore",
-    "LOGOUT": "Logout"
+    "LOGOUT": "Logout",
+    "ADMIN": "Admin",
+    "HOST": "Host"
   },
   "AUTH": {
     "EMAIL": "Email",
@@ -114,5 +116,19 @@
     "NO_SERVICES": "This business has not published services yet.",
     "BOOK_THIS": "Book from this page",
     "BOOK_HINT": "Share this link with customers or open the full booking flow with real-time availability."
+  },
+  "ADMIN": {
+    "EYEBROW": "Admin panel",
+    "TITLE": "Global dashboard",
+    "SUBTITLE": "Global view of users, bookings, properties and payments.",
+    "RECENT_BOOKINGS": "Recent bookings",
+    "RECENT_USERS": "Recent users"
+  },
+  "HOST": {
+    "EYEBROW": "Host",
+    "TITLE": "Services and activities",
+    "SUBTITLE": "Create experiences or extra services linked to your businesses.",
+    "CREATE": "Create activity",
+    "EMPTY": "You do not have activities yet."
   }
 }

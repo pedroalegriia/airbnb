@@ -21,5 +21,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function properties(): HasMany { return $this->hasMany(Property::class, 'host_id'); }
     public function bookings(): HasMany { return $this->hasMany(Booking::class); }
     public function reviews(): HasMany { return $this->hasMany(Review::class); }
+    public function activities(): HasMany { return $this->hasMany(Activity::class, 'host_id'); }
     public function isHost(): bool { return $this->role === 'host'; }
+    public function isAdmin(): bool { return $this->role === 'admin'; }
 }

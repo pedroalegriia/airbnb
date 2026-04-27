@@ -17,6 +17,8 @@ import { I18nService } from '../../../core/services/i18n.service';
       <a routerLink="/" routerLinkActive="bg-slate-950 text-white" [routerLinkActiveOptions]="{ exact: true }" class="rounded-full px-4 py-2 text-slate-600 transition hover:bg-slate-100">{{ 'NAV.HOME' | translate }}</a>
       <a routerLink="/properties" routerLinkActive="bg-slate-950 text-white" class="rounded-full px-4 py-2 text-slate-600 transition hover:bg-slate-100">{{ 'NAV.EXPLORE' | translate }}</a>
       <a routerLink="/bookings" routerLinkActive="bg-slate-950 text-white" class="rounded-full px-4 py-2 text-slate-600 transition hover:bg-slate-100">{{ 'NAV.BOOKINGS' | translate }}</a>
+      @if (auth.user()?.role === 'host' || auth.user()?.role === 'admin') { <a routerLink="/host/activities" routerLinkActive="bg-slate-950 text-white" class="rounded-full px-4 py-2 text-slate-600 transition hover:bg-slate-100">{{ 'NAV.ACTIVITIES' | translate }}</a> }
+      @if (auth.user()?.role === 'admin') { <a routerLink="/admin" routerLinkActive="bg-slate-950 text-white" class="rounded-full px-4 py-2 text-slate-600 transition hover:bg-slate-100">{{ 'NAV.ADMIN' | translate }}</a> }
     </div>
     <div class="flex items-center gap-2">
       <select [value]="i18n.current()" (change)="i18n.use($any($event.target).value)" class="rounded-full border border-slate-200 bg-white px-3 py-2 text-sm font-black shadow-sm outline-none">
@@ -37,7 +39,7 @@ import { I18nService } from '../../../core/services/i18n.service';
     <a routerLink="/" routerLinkActive="bg-rose-50 text-rose-600" [routerLinkActiveOptions]="{ exact: true }" class="rounded-2xl py-2"><span class="block text-lg">H</span>{{ 'NAV.HOME' | translate }}</a>
     <a routerLink="/properties" routerLinkActive="bg-rose-50 text-rose-600" class="rounded-2xl py-2"><span class="block text-lg">E</span>{{ 'NAV.EXPLORE' | translate }}</a>
     <a routerLink="/bookings" routerLinkActive="bg-rose-50 text-rose-600" class="rounded-2xl py-2"><span class="block text-lg">B</span>{{ 'NAV.BOOKINGS' | translate }}</a>
-    <a routerLink="/profile" routerLinkActive="bg-rose-50 text-rose-600" class="rounded-2xl py-2"><span class="block text-lg">P</span>{{ 'NAV.PROFILE' | translate }}</a>
+    <a [routerLink]="auth.user()?.role === 'admin' ? '/admin' : '/profile'" routerLinkActive="bg-rose-50 text-rose-600" class="rounded-2xl py-2"><span class="block text-lg">P</span>{{ auth.user()?.role === 'admin' ? ('NAV.ADMIN' | translate) : ('NAV.PROFILE' | translate) }}</a>
   </div>
 </nav>`
 })

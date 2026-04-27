@@ -3,7 +3,7 @@ import { Injectable, signal } from '@angular/core';
 import { catchError, of, tap } from 'rxjs';
 
 interface AuthPayload { data: { token: string; user: User }; message: string; }
-export interface User { id: number; name: string; email: string; role: 'guest' | 'host'; locale: string; }
+export interface User { id: number; name: string; email: string; role: 'guest' | 'host' | 'admin'; locale: string; }
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {

@@ -10,7 +10,9 @@
     "LOGIN": "Entrar",
     "REGISTER": "Registro",
     "EXPLORE": "Explorar",
-    "LOGOUT": "Salir"
+    "LOGOUT": "Salir",
+    "ADMIN": "Admin",
+    "HOST": "Host"
   },
   "AUTH": {
     "EMAIL": "Correo",
@@ -114,5 +116,19 @@
     "NO_SERVICES": "Este negocio aun no publico servicios.",
     "BOOK_THIS": "Reserva desde esta pagina",
     "BOOK_HINT": "Comparte este link con clientes o abre el flujo completo de reserva con disponibilidad en tiempo real."
+  },
+  "ADMIN": {
+    "EYEBROW": "Panel admin",
+    "TITLE": "Dashboard general",
+    "SUBTITLE": "Vista global de usuarios, reservas, propiedades y pagos.",
+    "RECENT_BOOKINGS": "Reservas recientes",
+    "RECENT_USERS": "Usuarios recientes"
+  },
+  "HOST": {
+    "EYEBROW": "Anfitrion",
+    "TITLE": "Servicios y actividades",
+    "SUBTITLE": "Crea experiencias o servicios extra asociados a tus negocios.",
+    "CREATE": "Crear actividad",
+    "EMPTY": "Aun no tienes actividades."
   }
 }

@@ -2,7 +2,7 @@ import { CurrencyPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
-import { ApiService, Property } from '../../../core/services/api.service';
+import { Activity, ApiService, Property } from '../../../core/services/api.service';
 import { PropertyCardComponent } from '../../../shared/components/property-card/property-card.component';
 
 @Component({
@@ -50,6 +50,21 @@ import { PropertyCardComponent } from '../../../shared/components/property-card/
           </div>
         </section>
 
+        <section class="card p-6 md:p-8">
+          <p class="text-sm font-black uppercase tracking-wide text-rose-500">{{ 'NAV.ACTIVITIES' | translate }}</p>
+          <h2 class="mt-2 text-3xl font-black">{{ 'HOST.TITLE' | translate }}</h2>
+          <div class="mt-6 grid gap-4 md:grid-cols-2">
+            @for (activity of activities; track activity.id) {
+              <article class="overflow-hidden rounded-[2rem] bg-slate-50 ring-1 ring-slate-100">
+                <img [src]="activity.image_url || 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=700&q=85'" class="h-44 w-full object-cover" alt="" />
+                <div class="p-5"><span class="pill">{{ activity.category }}</span><h3 class="mt-3 text-xl font-black">{{ activity.title }}</h3><p class="mt-2 text-sm leading-6 text-slate-500">{{ activity.description }}</p><p class="mt-4 text-2xl font-black">{{ activity.price | currency }}</p></div>
+              </article>
+            } @empty {
+              <p class="rounded-3xl bg-slate-50 p-5 text-slate-500">{{ 'HOST.EMPTY' | translate }}</p>
+            }
+          </div>
+        </section>
+
         <section class="grid gap-4 md:grid-cols-3">
           <div class="card p-5"><p class="text-sm font-bold text-slate-500">{{ 'DETAIL.CAPACITY' | translate }}</p><p class="mt-2 text-3xl font-black">{{ property.max_guests }}</p></div>
           <div class="card p-5"><p class="text-sm font-bold text-slate-500">{{ 'PROPERTY.CLEANING' | translate }}</p><p class="mt-2 text-3xl font-black">{{ property.cleaning_fee | currency }}</p></div>
@@ -69,10 +84,14 @@ import { PropertyCardComponent } from '../../../shared/components/property-card/
 })
 export class BusinessPageComponent implements OnInit {
   property?: Property;
+  activities: Activity[] = [];
   constructor(private api: ApiService, private route: ActivatedRoute) {}
   ngOnInit(): void {
     const slug = this.route.snapshot.paramMap.get('slug')!;
-    this.api.getPublicPage(slug).subscribe(r => this.property = r.data);
+    this.api.getPublicPage(slug).subscribe(r => {
+      this.property = r.data;
+      this.api.getPublicActivities(r.data.id).subscribe(a => this.activities = a.data);
+    });
   }
   share(): void {
     const url = window.location.href;

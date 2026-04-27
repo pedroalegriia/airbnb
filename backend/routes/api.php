@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AdminController;
+use App\Http\Controllers\Api\ActivityController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\BookingController;
 use App\Http\Controllers\Api\PaymentController;
@@ -14,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 Route::post('/auth/register', [AuthController::class, 'register']);
 Route::post('/auth/login', [AuthController::class, 'login']);
 Route::get('/properties', [PropertyController::class, 'index']);
+Route::get('/properties/{property}/activities', [ActivityController::class, 'publicByProperty']);
+Route::get('/public-pages/{slug}', [PropertyController::class, 'publicPage']);
 Route::get('/business-pages/{slug}', [PropertyController::class, 'publicPage']);
 Route::get('/properties/{id}', [PropertyController::class, 'show']);
 Route::post('/payments/stripe/webhook', [PaymentController::class, 'stripeWebhook']);
@@ -39,6 +42,8 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/bookings/{booking}/cancel', [BookingController::class, 'cancel']);
         Route::post('/payments/{payment}/intent', [PaymentController::class, 'intent']);
         Route::post('/reviews', [ReviewController::class, 'store']);
+        Route::apiResource('/activities', ActivityController::class)->except(['show']);
+        Route::get('/admin/dashboard', [AdminController::class, 'dashboard']);
         Route::get('/admin/users', [AdminController::class, 'users']);
         Route::get('/admin/properties', [AdminController::class, 'properties']);
         Route::patch('/admin/users/{user}/block', [AdminController::class, 'blockUser']);

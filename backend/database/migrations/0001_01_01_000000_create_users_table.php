@@ -13,7 +13,7 @@ return new class extends Migration {
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum('role', ['guest', 'host'])->default('guest')->index();
+            $table->string('role', 20)->default('guest')->index();
             $table->boolean('is_blocked')->default(false)->index();
             $table->string('locale', 2)->default('es');
             $table->rememberToken();
