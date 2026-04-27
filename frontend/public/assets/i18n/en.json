@@ -99,7 +99,10 @@
     "CAPACITY": "Capacity",
     "HIGHLIGHTS": "What this place offers",
     "BOOKING_CREATED": "Pending booking created",
-    "PAYMENT_HINT": "Complete payment before expiration to confirm your stay."
+    "PAYMENT_HINT": "Complete payment before expiration to confirm your stay.",
+    "NOT_FOUND_TITLE": "We could not load this stay",
+    "NOT_FOUND_TEXT": "The link may not exist, the stay may be paused, or the server returned an error.",
+    "BACK_TO_LIST": "Back to stays"
   },
   "PROFILE": {
     "TITLE": "Your profile",

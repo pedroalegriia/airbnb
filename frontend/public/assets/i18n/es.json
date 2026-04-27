@@ -99,7 +99,10 @@
     "CAPACITY": "Capacidad",
     "HIGHLIGHTS": "Lo que ofrece",
     "BOOKING_CREATED": "Reserva pendiente creada",
-    "PAYMENT_HINT": "Completa el pago antes de que expire para confirmar tu estancia."
+    "PAYMENT_HINT": "Completa el pago antes de que expire para confirmar tu estancia.",
+    "NOT_FOUND_TITLE": "No pudimos cargar este alojamiento",
+    "NOT_FOUND_TEXT": "Puede que el link no exista, que el alojamiento este pausado o que el servidor haya devuelto un error.",
+    "BACK_TO_LIST": "Volver a alojamientos"
   },
   "PROFILE": {
     "TITLE": "Tu perfil",

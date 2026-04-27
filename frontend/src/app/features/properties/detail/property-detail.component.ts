@@ -1,12 +1,12 @@
 import { CurrencyPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
 import { ApiService, Booking, Property } from '../../../core/services/api.service';
 import { BookingFormComponent } from '../../../shared/components/booking-form/booking-form.component';
 @Component({
   selector: 'app-property-detail',
-  imports: [CurrencyPipe, TranslatePipe, BookingFormComponent],
+  imports: [CurrencyPipe, RouterLink, TranslatePipe, BookingFormComponent],
   template: `<section class="app-shell">
   @if (property) {
     <div class="space-y-6">
@@ -23,9 +23,39 @@ import { BookingFormComponent } from '../../../shared/components/booking-form/bo
         <aside class="lg:sticky lg:top-24 lg:self-start"><app-booking-form [pricePerNight]="property.price_per_night" [cleaningFee]="property.cleaning_fee" (submitted)="book($event)" />@if (booking) { <div class="mt-4 rounded-[2rem] border border-emerald-100 bg-emerald-50 p-5 text-emerald-950 shadow-lg shadow-emerald-900/5"><p class="text-sm font-black uppercase tracking-wide text-emerald-700">{{ booking.status }}</p><h3 class="mt-1 text-xl font-black">{{ 'DETAIL.BOOKING_CREATED' | translate }}</h3><p class="mt-2 text-sm leading-6 text-emerald-800">{{ 'DETAIL.PAYMENT_HINT' | translate }}</p><button class="mt-4 w-full rounded-2xl bg-emerald-600 px-4 py-3 font-black text-white shadow-lg shadow-emerald-600/20" (click)="pay()">{{ 'PROPERTY.PAY' | translate }}</button></div> }</aside>
       </div>
     </div>
+  } @else if (error) {
+    <div class="card mx-auto max-w-2xl p-8 text-center">
+      <p class="text-sm font-black uppercase tracking-wide text-rose-500">Error</p>
+      <h1 class="mt-3 text-3xl font-black">{{ 'DETAIL.NOT_FOUND' | translate }}</h1>
+      <p class="mt-3 leading-7 text-slate-500">{{ error }}</p>
+      <a routerLink="/properties" class="mt-6 inline-flex rounded-2xl bg-slate-950 px-5 py-3 font-black text-white">{{ 'LIST.TITLE' | translate }}</a>
+    </div>
   } @else {
     <div class="card h-96 animate-pulse bg-slate-100"></div>
   }
 </section>`
 })
-export class PropertyDetailComponent implements OnInit { property?: Property; booking?: Booking; constructor(private api: ApiService, private route: ActivatedRoute) {} ngOnInit(): void { const id = this.route.snapshot.paramMap.get('id')!; this.api.getProperty(id).subscribe(r => this.property = r.data); } book(dates: { start_date: string; end_date: string }): void { if (!this.property) return; this.api.createBooking({ property_id: this.property.id, ...dates }).subscribe(r => this.booking = r.data); } pay(): void { const paymentId = this.booking?.payment?.id; if (paymentId) this.api.createPaymentIntent(paymentId).subscribe(); } }
+export class PropertyDetailComponent implements OnInit {
+  property?: Property;
+  booking?: Booking;
+  error = '';
+  constructor(private api: ApiService, private route: ActivatedRoute) {}
+  ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      const id = params.get('id');
+      this.property = undefined;
+      this.booking = undefined;
+      this.error = '';
+      if (!id) {
+        this.error = 'Missing property id.';
+        return;
+      }
+      this.api.getProperty(id).subscribe({
+        next: r => this.property = r.data,
+        error: e => this.error = e.error?.message || 'No se pudo cargar el alojamiento. Verifica que exista y que hayas ejecutado las migraciones/seeders.'
+      });
+    });
+  }
+  book(dates: { start_date: string; end_date: string }): void { if (!this.property) return; this.api.createBooking({ property_id: this.property.id, ...dates }).subscribe(r => this.booking = r.data); }
+  pay(): void { const paymentId = this.booking?.payment?.id; if (paymentId) this.api.createPaymentIntent(paymentId).subscribe(); }
+}
