@@ -27,12 +27,21 @@ composer install
 cp .env.example .env
 php artisan key:generate
 php artisan migrate
+php artisan db:seed
 php artisan serve
 php artisan queue:work
 php artisan schedule:work
 ```
 
 Configure S3 and Stripe variables in `.env` for production-like uploads and payment webhooks.
+
+Demo credentials seeded with `php artisan db:seed`:
+
+- Admin/host: `admin@example.com` / `password`
+- Host: `lucia.host@example.com` / `password`
+- Host: `miguel.host@example.com` / `password`
+- Guest: `sofia.guest@example.com` / `password`
+- Guest: `alex.guest@example.com` / `password`
 
 ### Frontend
 
