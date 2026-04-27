@@ -9,6 +9,7 @@ use App\Models\Activity;
 use App\Models\Property;
 use App\Support\ApiResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ActivityController extends Controller
 {
@@ -33,7 +34,7 @@ class ActivityController extends Controller
     {
         $property = Property::findOrFail($request->validated('property_id'));
         abort_if($request->user()->role === 'host' && $property->host_id !== $request->user()->id, 403, __('messages.forbidden'));
-        $activity = Activity::create(array_merge($request->validated(), ['host_id' => $property->host_id]));
+        $activity = Activity::create(array_merge($this->payload($request), ['host_id' => $property->host_id]));
         return $this->success(new ActivityResource($activity->load('property')), 'messages.activity_created', 201);
     }
 
@@ -42,7 +43,7 @@ class ActivityController extends Controller
         abort_if($request->user()->role === 'host' && $activity->host_id !== $request->user()->id, 403, __('messages.forbidden'));
         $property = Property::findOrFail($request->validated('property_id'));
         abort_if($request->user()->role === 'host' && $property->host_id !== $request->user()->id, 403, __('messages.forbidden'));
-        $activity->update(array_merge($request->validated(), ['host_id' => $property->host_id]));
+        $activity->update(array_merge($this->payload($request), ['host_id' => $property->host_id]));
         return $this->success(new ActivityResource($activity->load('property')), 'messages.activity_updated');
     }
 
@@ -52,5 +53,17 @@ class ActivityController extends Controller
         abort_if($request->user()->role === 'host' && $activity->host_id !== $request->user()->id, 403, __('messages.forbidden'));
         $activity->delete();
         return $this->success(null, 'messages.activity_deleted');
+    }
+
+    private function payload(ActivityRequest $request): array
+    {
+        $payload = $request->safe()->except('image');
+
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('activities', config('filesystems.default'));
+            $payload['image_url'] = Storage::disk(config('filesystems.default'))->url($path);
+        }
+
+        return $payload;
     }
 }

@@ -19,6 +19,11 @@ import { UiButtonComponent } from '../../../shared/components/ui-button/ui-butto
     <input formControlName="category_en" class="field" placeholder="Category EN" />
     <input formControlName="price" type="number" class="field" placeholder="Price" />
     <input formControlName="duration_minutes" type="number" class="field" placeholder="Duration minutes" />
+    <label class="block rounded-[1.5rem] border border-dashed border-slate-300 bg-slate-50 p-4 text-sm font-bold text-slate-600">
+      {{ 'HOST.IMAGE' | translate }}
+      <input type="file" accept="image/*" class="mt-3 block w-full text-sm" (change)="selectImage($event)" />
+    </label>
+    @if (imagePreview) { <img [src]="imagePreview" class="h-36 w-full rounded-3xl object-cover" alt="" /> }
     <select formControlName="status" class="field"><option value="active">Active</option><option value="paused">Paused</option></select>
     <app-ui-button type="submit" [disabled]="form.invalid">{{ 'HOST.CREATE' | translate }}</app-ui-button>
   </form>
@@ -36,10 +41,13 @@ import { UiButtonComponent } from '../../../shared/components/ui-button/ui-butto
 export class HostActivitiesComponent implements OnInit {
   activities: Activity[] = [];
   error = '';
+  imageFile?: File;
+  imagePreview = '';
   form = new FormBuilder().nonNullable.group({ property_id: [0, [Validators.required, Validators.min(1)]], title_es: ['', Validators.required], title_en: ['', Validators.required], category_es: ['', Validators.required], category_en: ['', Validators.required], price: [0], duration_minutes: [60], status: ['active', Validators.required] });
   constructor(private api: ApiService) {}
   ngOnInit(): void { this.load(); }
   load(): void { this.api.getActivities().subscribe({ next: r => this.activities = r.data, error: e => this.error = e.error?.message || 'No autorizado' }); }
-  create(): void { this.error = ''; this.api.createActivity(this.form.getRawValue()).subscribe({ next: () => { this.form.reset({ property_id: 0, title_es: '', title_en: '', category_es: '', category_en: '', price: 0, duration_minutes: 60, status: 'active' }); this.load(); }, error: e => this.error = e.error?.message || 'No autorizado' }); }
+  selectImage(event: Event): void { const file = (event.target as HTMLInputElement).files?.[0]; if (!file) return; this.imageFile = file; this.imagePreview = URL.createObjectURL(file); }
+  create(): void { this.error = ''; this.api.createActivity(this.form.getRawValue(), this.imageFile).subscribe({ next: () => { this.form.reset({ property_id: 0, title_es: '', title_en: '', category_es: '', category_en: '', price: 0, duration_minutes: 60, status: 'active' }); this.imageFile = undefined; this.imagePreview = ''; this.load(); }, error: e => this.error = e.error?.message || 'No autorizado' }); }
   remove(activity: Activity): void { this.api.deleteActivity(activity.id).subscribe({ next: () => this.load(), error: e => this.error = e.error?.message || 'No autorizado' }); }
 }

@@ -21,7 +21,15 @@ export class ApiService {
   getPublicPage(slug: string): Observable<ApiResponse<Property>> { return this.http.get<ApiResponse<Property>>(`${this.baseUrl}/public-pages/${slug}`); }
   getPublicActivities(propertyId: number): Observable<Paginated<Activity>> { return this.http.get<Paginated<Activity>>(`${this.baseUrl}/properties/${propertyId}/activities`); }
   getActivities(): Observable<Paginated<Activity>> { return this.http.get<Paginated<Activity>>(`${this.baseUrl}/activities`); }
-  createActivity(payload: Partial<Activity>): Observable<ApiResponse<Activity>> { return this.http.post<ApiResponse<Activity>>(`${this.baseUrl}/activities`, payload); }
+  createActivity(payload: Partial<Activity>, image?: File | null): Observable<ApiResponse<Activity>> {
+    if (!image) return this.http.post<ApiResponse<Activity>>(`${this.baseUrl}/activities`, payload);
+    const formData = new FormData();
+    Object.entries(payload).forEach(([key, value]) => {
+      if (value !== undefined && value !== null) formData.append(key, String(value));
+    });
+    formData.append('image', image);
+    return this.http.post<ApiResponse<Activity>>(`${this.baseUrl}/activities`, formData);
+  }
   deleteActivity(id: number): Observable<ApiResponse<null>> { return this.http.delete<ApiResponse<null>>(`${this.baseUrl}/activities/${id}`); }
   getAdminDashboard(): Observable<ApiResponse<AdminDashboard>> { return this.http.get<ApiResponse<AdminDashboard>>(`${this.baseUrl}/admin/dashboard`); }
   createBooking(payload: { property_id: number; start_date: string; end_date: string }): Observable<ApiResponse<Booking>> { return this.http.post<ApiResponse<Booking>>(`${this.baseUrl}/bookings`, payload); }

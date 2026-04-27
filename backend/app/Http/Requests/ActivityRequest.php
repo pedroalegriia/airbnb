@@ -24,6 +24,7 @@ class ActivityRequest extends FormRequest
             'price' => ['nullable','numeric','min:0'],
             'duration_minutes' => ['nullable','integer','min:1','max:1440'],
             'image_url' => ['nullable','url','max:2048'],
+            'image' => ['nullable','file','image','max:5120'],
             'status' => ['required','in:active,paused'],
         ];
     }

@@ -129,6 +129,9 @@
     "TITLE": "Servicios y actividades",
     "SUBTITLE": "Crea experiencias o servicios extra asociados a tus negocios.",
     "CREATE": "Crear actividad",
-    "EMPTY": "Aun no tienes actividades."
+    "EMPTY": "Aun no tienes actividades.",
+    "IMAGE": "Imagen de la actividad",
+    "IMAGE_HELP": "Sube una foto JPG/PNG/WebP de hasta 5MB.",
+    "CHOOSE_IMAGE": "Seleccionar imagen"
   }
 }
