@@ -12,6 +12,9 @@ return new class extends Migration {
         } elseif ($driver === 'pgsql') {
             DB::statement("ALTER TABLE users ALTER COLUMN role TYPE VARCHAR(20)");
             DB::statement("ALTER TABLE users ALTER COLUMN role SET DEFAULT 'guest'");
+        } elseif ($driver === 'sqlite') {
+            // SQLite stores enum columns as text in Laravel, so no schema change is required.
+            return;
         }
     }
 
