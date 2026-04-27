@@ -1,9 +1,108 @@
 {
-  "APP": { "NAME": "Stays", "TAGLINE": "Find unique places to stay" },
-  "NAV": { "HOME": "Home", "BOOKINGS": "Bookings", "PROFILE": "Profile", "LOGIN": "Login", "REGISTER": "Register" },
-  "AUTH": { "EMAIL": "Email", "PASSWORD": "Password", "NAME": "Name", "CONFIRM": "Confirm password", "ROLE": "Role", "GUEST": "Guest", "HOST": "Host", "LOGIN": "Sign in", "REGISTER": "Create account" },
-  "SEARCH": { "CITY": "City", "GUESTS": "Guests", "START": "Check-in", "END": "Check-out", "CTA": "Search" },
-  "PROPERTY": { "NIGHT": "night", "DETAIL": "View details", "BOOK": "Book", "UNAVAILABLE": "Dates unavailable", "PAY": "Pay now" },
-  "BOOKINGS": { "TITLE": "My bookings", "EXPIRES": "Expires", "EMPTY": "You do not have bookings yet" },
-  "COMMON": { "LOADING": "Loading...", "ERROR": "Something went wrong", "SAVE": "Save" }
+  "APP": {
+    "NAME": "Stays",
+    "TAGLINE": "Find unique places to stay"
+  },
+  "NAV": {
+    "HOME": "Home",
+    "BOOKINGS": "Bookings",
+    "PROFILE": "Profile",
+    "LOGIN": "Login",
+    "REGISTER": "Register",
+    "EXPLORE": "Explore"
+  },
+  "AUTH": {
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "NAME": "Name",
+    "CONFIRM": "Confirm password",
+    "ROLE": "Role",
+    "GUEST": "Guest",
+    "HOST": "Host",
+    "LOGIN": "Sign in",
+    "REGISTER": "Create account",
+    "SECURE": "Protected access",
+    "WELCOME": "Welcome back",
+    "WELCOME_TEXT": "Manage bookings, payments, and homes through a clear and secure experience.",
+    "LOGIN_TEXT": "Sign in to continue with your bookings.",
+    "NO_ACCOUNT": "No account yet?",
+    "START": "Start for free",
+    "REGISTER_TEXT": "Create your account to book or publish homes.",
+    "HAS_ACCOUNT": "Already have an account?",
+    "HOST_CTA": "Publish your space confidently",
+    "HOST_TEXT": "Simple tools for availability, bookings, payments, and verified reviews."
+  },
+  "SEARCH": {
+    "CITY": "City",
+    "GUESTS": "Guests",
+    "START": "Check-in",
+    "END": "Check-out",
+    "CTA": "Search",
+    "CITY_PLACEHOLDER": "Barcelona, Madrid, Cancun"
+  },
+  "PROPERTY": {
+    "NIGHT": "night",
+    "DETAIL": "View details",
+    "BOOK": "Book",
+    "UNAVAILABLE": "Dates unavailable",
+    "PAY": "Pay now",
+    "STARTING_AT": "Starting at",
+    "INSTANT": "Secure payment",
+    "CLEANING": "Cleaning",
+    "SERVICE": "Service",
+    "NO_CHARGE": "You will not be charged until payment is confirmed."
+  },
+  "BOOKINGS": {
+    "TITLE": "My bookings",
+    "EXPIRES": "Expires",
+    "EMPTY": "You do not have bookings yet",
+    "EYEBROW": "Trips",
+    "SUBTITLE": "Check pending, confirmed, and expired bookings.",
+    "EMPTY_TEXT": "When you book a stay, it will appear here with status and payment details."
+  },
+  "COMMON": {
+    "LOADING": "Loading...",
+    "ERROR": "Something went wrong",
+    "SAVE": "Save"
+  },
+  "HOME": {
+    "BADGE": "Secure bookings with real-time availability",
+    "TITLE_A": "Memorable stays,",
+    "TITLE_B": "without friction",
+    "SUBTITLE": "Search verified homes, compare clear pricing, and book through a mobile-first flow from the first tap.",
+    "STAYS": "stays",
+    "RATING": "rating",
+    "SUPPORT": "support",
+    "FEATURED": "Featured stay",
+    "EXPLORE_NOW": "Explore now",
+    "VALUE_1_TITLE": "Real availability",
+    "VALUE_1_TEXT": "The flow validates dates against pending and confirmed bookings to avoid double booking.",
+    "VALUE_2_TITLE": "Secure payments",
+    "VALUE_2_TEXT": "A booking is only confirmed when payment is marked successful by webhook.",
+    "VALUE_3_TITLE": "Mobile experience",
+    "VALUE_3_TEXT": "Responsive UI, installable PWA, and optimized for fast navigation."
+  },
+  "LIST": {
+    "EYEBROW": "Homes",
+    "TITLE": "Explore stays",
+    "SUBTITLE": "Filter by city, dates, and guests to find the right option.",
+    "RESULTS": "results",
+    "EMPTY_TITLE": "No stays found",
+    "EMPTY_TEXT": "Try another city, adjust dates, or reduce the guest count."
+  },
+  "DETAIL": {
+    "ABOUT": "About this stay",
+    "PRICE": "Nightly price",
+    "CAPACITY": "Capacity",
+    "HIGHLIGHTS": "What this place offers",
+    "BOOKING_CREATED": "Pending booking created",
+    "PAYMENT_HINT": "Complete payment before expiration to confirm your stay."
+  },
+  "PROFILE": {
+    "TITLE": "Your profile",
+    "SUBTITLE": "Manage preferences, language, and basic account data.",
+    "ACCOUNT": "Account information",
+    "PREFERENCES": "Preferences",
+    "PREFERENCES_TEXT": "Language is saved locally and sent to the API on every request."
+  }
 }

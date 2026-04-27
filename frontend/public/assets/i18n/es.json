@@ -1,9 +1,108 @@
 {
-  "APP": { "NAME": "Estancias", "TAGLINE": "Encuentra alojamientos únicos" },
-  "NAV": { "HOME": "Inicio", "BOOKINGS": "Reservas", "PROFILE": "Perfil", "LOGIN": "Entrar", "REGISTER": "Registro" },
-  "AUTH": { "EMAIL": "Correo", "PASSWORD": "Contraseña", "NAME": "Nombre", "CONFIRM": "Confirmar contraseña", "ROLE": "Rol", "GUEST": "Viajero", "HOST": "Anfitrión", "LOGIN": "Iniciar sesión", "REGISTER": "Crear cuenta" },
-  "SEARCH": { "CITY": "Ciudad", "GUESTS": "Huéspedes", "START": "Entrada", "END": "Salida", "CTA": "Buscar" },
-  "PROPERTY": { "NIGHT": "noche", "DETAIL": "Ver detalle", "BOOK": "Reservar", "UNAVAILABLE": "Fechas no disponibles", "PAY": "Pagar ahora" },
-  "BOOKINGS": { "TITLE": "Mis reservas", "EXPIRES": "Expira", "EMPTY": "Aún no tienes reservas" },
-  "COMMON": { "LOADING": "Cargando...", "ERROR": "Ocurrió un error", "SAVE": "Guardar" }
+  "APP": {
+    "NAME": "Estancias",
+    "TAGLINE": "Encuentra alojamientos únicos"
+  },
+  "NAV": {
+    "HOME": "Inicio",
+    "BOOKINGS": "Reservas",
+    "PROFILE": "Perfil",
+    "LOGIN": "Entrar",
+    "REGISTER": "Registro",
+    "EXPLORE": "Explorar"
+  },
+  "AUTH": {
+    "EMAIL": "Correo",
+    "PASSWORD": "Contraseña",
+    "NAME": "Nombre",
+    "CONFIRM": "Confirmar contraseña",
+    "ROLE": "Rol",
+    "GUEST": "Viajero",
+    "HOST": "Anfitrión",
+    "LOGIN": "Iniciar sesión",
+    "REGISTER": "Crear cuenta",
+    "SECURE": "Acceso protegido",
+    "WELCOME": "Bienvenido de nuevo",
+    "WELCOME_TEXT": "Gestiona reservas, pagos y alojamientos desde una experiencia clara y segura.",
+    "LOGIN_TEXT": "Ingresa para continuar con tus reservas.",
+    "NO_ACCOUNT": "¿No tienes cuenta?",
+    "START": "Empieza gratis",
+    "REGISTER_TEXT": "Crea tu cuenta para reservar o publicar alojamientos.",
+    "HAS_ACCOUNT": "¿Ya tienes cuenta?",
+    "HOST_CTA": "Publica tu espacio con confianza",
+    "HOST_TEXT": "Herramientas simples para disponibilidad, reservas, pagos y reseñas verificadas."
+  },
+  "SEARCH": {
+    "CITY": "Ciudad",
+    "GUESTS": "Huéspedes",
+    "START": "Entrada",
+    "END": "Salida",
+    "CTA": "Buscar",
+    "CITY_PLACEHOLDER": "Barcelona, Madrid, Cancun"
+  },
+  "PROPERTY": {
+    "NIGHT": "noche",
+    "DETAIL": "Ver detalle",
+    "BOOK": "Reservar",
+    "UNAVAILABLE": "Fechas no disponibles",
+    "PAY": "Pagar ahora",
+    "STARTING_AT": "Desde",
+    "INSTANT": "Pago seguro",
+    "CLEANING": "Limpieza",
+    "SERVICE": "Servicio",
+    "NO_CHARGE": "No se realizará ningún cargo hasta confirmar el pago."
+  },
+  "BOOKINGS": {
+    "TITLE": "Mis reservas",
+    "EXPIRES": "Expira",
+    "EMPTY": "Aún no tienes reservas",
+    "EYEBROW": "Viajes",
+    "SUBTITLE": "Consulta reservas pendientes, confirmadas y expiradas.",
+    "EMPTY_TEXT": "Cuando reserves un alojamiento, aparecerá aquí con su estado y detalles de pago."
+  },
+  "COMMON": {
+    "LOADING": "Cargando...",
+    "ERROR": "Ocurrió un error",
+    "SAVE": "Guardar"
+  },
+  "HOME": {
+    "BADGE": "Reservas seguras con disponibilidad en tiempo real",
+    "TITLE_A": "Escapadas memorables,",
+    "TITLE_B": "sin complicaciones",
+    "SUBTITLE": "Busca alojamientos verificados, compara precios claros y reserva con un flujo pensado para móvil desde el primer toque.",
+    "STAYS": "alojamientos",
+    "RATING": "valoración",
+    "SUPPORT": "soporte",
+    "FEATURED": "Alojamiento destacado",
+    "EXPLORE_NOW": "Explorar ahora",
+    "VALUE_1_TITLE": "Disponibilidad real",
+    "VALUE_1_TEXT": "El flujo valida fechas contra reservas pendientes y confirmadas para evitar dobles reservas.",
+    "VALUE_2_TITLE": "Pagos seguros",
+    "VALUE_2_TEXT": "La reserva solo se confirma cuando el pago se marca como exitoso desde webhook.",
+    "VALUE_3_TITLE": "Experiencia móvil",
+    "VALUE_3_TEXT": "Interfaz responsive, instalable como PWA y optimizada para navegación rápida."
+  },
+  "LIST": {
+    "EYEBROW": "Alojamientos",
+    "TITLE": "Explora estancias",
+    "SUBTITLE": "Filtra por ciudad, fechas y huéspedes para encontrar la opción ideal.",
+    "RESULTS": "resultados",
+    "EMPTY_TITLE": "No encontramos alojamientos",
+    "EMPTY_TEXT": "Prueba con otra ciudad, cambia las fechas o reduce el número de huéspedes."
+  },
+  "DETAIL": {
+    "ABOUT": "Acerca del alojamiento",
+    "PRICE": "Precio por noche",
+    "CAPACITY": "Capacidad",
+    "HIGHLIGHTS": "Lo que ofrece",
+    "BOOKING_CREATED": "Reserva pendiente creada",
+    "PAYMENT_HINT": "Completa el pago antes de que expire para confirmar tu estancia."
+  },
+  "PROFILE": {
+    "TITLE": "Tu perfil",
+    "SUBTITLE": "Administra tus preferencias, idioma y datos básicos de cuenta.",
+    "ACCOUNT": "Información de cuenta",
+    "PREFERENCES": "Preferencias",
+    "PREFERENCES_TEXT": "El idioma se guarda localmente y se envía al API en cada petición."
+  }
 }
