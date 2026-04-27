@@ -1,0 +1,9 @@
+{
+  "APP": { "NAME": "Estancias", "TAGLINE": "Encuentra alojamientos únicos" },
+  "NAV": { "HOME": "Inicio", "BOOKINGS": "Reservas", "PROFILE": "Perfil", "LOGIN": "Entrar", "REGISTER": "Registro" },
+  "AUTH": { "EMAIL": "Correo", "PASSWORD": "Contraseña", "NAME": "Nombre", "CONFIRM": "Confirmar contraseña", "ROLE": "Rol", "GUEST": "Viajero", "HOST": "Anfitrión", "LOGIN": "Iniciar sesión", "REGISTER": "Crear cuenta" },
+  "SEARCH": { "CITY": "Ciudad", "GUESTS": "Huéspedes", "START": "Entrada", "END": "Salida", "CTA": "Buscar" },
+  "PROPERTY": { "NIGHT": "noche", "DETAIL": "Ver detalle", "BOOK": "Reservar", "UNAVAILABLE": "Fechas no disponibles", "PAY": "Pagar ahora" },
+  "BOOKINGS": { "TITLE": "Mis reservas", "EXPIRES": "Expira", "EMPTY": "Aún no tienes reservas" },
+  "COMMON": { "LOADING": "Cargando...", "ERROR": "Ocurrió un error", "SAVE": "Guardar" }
+}

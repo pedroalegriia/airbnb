@@ -1,0 +1,12 @@
+{
+  "name": "Rental Marketplace",
+  "short_name": "Stays",
+  "theme_color": "#ff385c",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    { "src": "favicon.ico", "sizes": "48x48", "type": "image/x-icon" }
+  ]
+}

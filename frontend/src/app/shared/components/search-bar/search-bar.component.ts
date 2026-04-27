@@ -1,0 +1,6 @@
+import { Component, output } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { TranslatePipe } from '@ngx-translate/core';
+import { UiButtonComponent } from '../ui-button/ui-button.component';
+@Component({ selector: 'app-search-bar', imports: [ReactiveFormsModule, TranslatePipe, UiButtonComponent], template: `<form [formGroup]="form" (ngSubmit)="submitted.emit(form.value)" class="grid gap-3 rounded-3xl bg-white p-4 shadow-lg ring-1 ring-slate-100 md:grid-cols-5"><input formControlName="city" [placeholder]="'SEARCH.CITY' | translate" class="rounded-2xl border px-4 py-3 md:col-span-2" /><input formControlName="start_date" type="date" class="rounded-2xl border px-4 py-3" /><input formControlName="end_date" type="date" class="rounded-2xl border px-4 py-3" /><input formControlName="guests" type="number" min="1" [placeholder]="'SEARCH.GUESTS' | translate" class="rounded-2xl border px-4 py-3" /><app-ui-button type="submit">{{ 'SEARCH.CTA' | translate }}</app-ui-button></form>` })
+export class SearchBarComponent { submitted = output<Record<string, string>>(); form = new FormBuilder().nonNullable.group({ city: '', start_date: '', end_date: '', guests: '' }); }

@@ -1,0 +1,9 @@
+{
+  "APP": { "NAME": "Stays", "TAGLINE": "Find unique places to stay" },
+  "NAV": { "HOME": "Home", "BOOKINGS": "Bookings", "PROFILE": "Profile", "LOGIN": "Login", "REGISTER": "Register" },
+  "AUTH": { "EMAIL": "Email", "PASSWORD": "Password", "NAME": "Name", "CONFIRM": "Confirm password", "ROLE": "Role", "GUEST": "Guest", "HOST": "Host", "LOGIN": "Sign in", "REGISTER": "Create account" },
+  "SEARCH": { "CITY": "City", "GUESTS": "Guests", "START": "Check-in", "END": "Check-out", "CTA": "Search" },
+  "PROPERTY": { "NIGHT": "night", "DETAIL": "View details", "BOOK": "Book", "UNAVAILABLE": "Dates unavailable", "PAY": "Pay now" },
+  "BOOKINGS": { "TITLE": "My bookings", "EXPIRES": "Expires", "EMPTY": "You do not have bookings yet" },
+  "COMMON": { "LOADING": "Loading...", "ERROR": "Something went wrong", "SAVE": "Save" }
+}
