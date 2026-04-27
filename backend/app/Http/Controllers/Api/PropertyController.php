@@ -15,7 +15,7 @@ class PropertyController extends Controller
     public function __construct(private PropertyRepositoryInterface $properties, private PropertyService $service) {}
     public function index(Request $request) { return PropertyResource::collection($this->properties->search($request->only(['city','guests','start_date','end_date','per_page']))); }
     public function show(int $id) { return $this->success(new PropertyResource($this->properties->findVisible($id))); }
-    public function publicPage(string $slug) { return $this->success(new PropertyResource($this->properties->findBySlug($slug))); }
+    public function publicPage(string $slug) { return $this->success(new PropertyResource($this->properties->findPublicPage($slug))); }
     public function store(PropertyRequest $request) { return $this->success(new PropertyResource($this->service->create($request->user(), $request->validated())), 'messages.property_created', 201); }
     public function update(PropertyRequest $request, Property $property) { $this->authorizeHost($property); return $this->success(new PropertyResource($this->service->update($property, $request->validated())), 'messages.property_updated'); }
     public function destroy(Property $property) { $this->authorizeHost($property); $this->properties->delete($property); return $this->success(null, 'messages.property_deleted'); }
