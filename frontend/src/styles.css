@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@source "./app/**/*.{ts,html}";
+@source "./app";
 @source "./index.html";
 
 :root {
